@@ -2,6 +2,8 @@
 
 This document describes the main workflow of the CogGuard project, which contains two modules: Cognitive Profiling and Profile-to-Score Alignment.
 
+![Demo Screenshot](demo/img/demo.png)
+
 ## Before You Start
 
 - Recommended environment: Python 3.10+.

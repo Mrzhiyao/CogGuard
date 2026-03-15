@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CogGuard - Cognitive Graph Profiling</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #edf0f7;
+  --bg-card: #ffffff;
+  --border: #c7ced9;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --accent-blue: #1d4ed8;
+  --accent-cyan: #0e7490;
+  --accent-purple: #6d28d9;
+  --accent-orange: #b45309;
+  --accent-green: #047857;
+  --accent-red: #b91c1c;
+  --gradient-1: linear-gradient(135deg, #1d4ed8, #6d28d9);
+  --gradient-ops: linear-gradient(135deg, #b45309, #b91c1c);
+  --gradient-edu: linear-gradient(135deg, #047857, #0e7490);
+  --shadow-glow: 0 2px 12px rgba(0,0,0,0.10);
+  --shadow-card: 0 1px 4px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',-apple-system,sans-serif; background:var(--bg-primary); color:var(--text-primary); min-height:100vh; }
+.bg-grid { position:fixed; inset:0; background-image:linear-gradient(rgba(29,78,216,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(29,78,216,0.04) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; }
+.bg-orb { position:fixed; border-radius:50%; filter:blur(140px); opacity:0.06; pointer-events:none; }
+.bg-orb-1 { width:600px; height:600px; background:#1d4ed8; top:-200px; right:-100px; }
+.bg-orb-2 { width:500px; height:500px; background:#6d28d9; bottom:-150px; left:-100px; }
+
+header { position:relative; z-index:10; padding:1.5rem 3rem; border-bottom:2px solid var(--border); background:rgba(255,255,255,0.95); backdrop-filter:blur(20px); }
+.header-inner { max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+.logo { display:flex; align-items:center; gap:1rem; }
+.logo-icon { width:44px; height:44px; border-radius:12px; background:var(--gradient-1); display:flex; align-items:center; justify-content:center; font-size:1.1rem; font-weight:800; color:#fff; box-shadow:0 2px 10px rgba(29,78,216,0.3); letter-spacing:-0.02em; }
+.logo-text h1 { font-size:1.2rem; font-weight:800; background:var(--gradient-1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.logo-text p { font-size:0.72rem; color:var(--text-secondary); margin-top:1px; letter-spacing:0.04em; font-weight:500; }
+.health-badge { display:flex; align-items:center; gap:0.5rem; padding:0.35rem 0.9rem; border-radius:99px; background:rgba(4,120,87,0.1); border:1px solid rgba(4,120,87,0.3); font-size:0.75rem; color:var(--accent-green); font-weight:600; }
+.health-dot { width:7px; height:7px; border-radius:50%; background:var(--accent-green); animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(16,185,129,0.4)} 50%{opacity:0.8;box-shadow:0 0 0 5px rgba(16,185,129,0)} }
+
+.main-container { position:relative; z-index:10; max-width:1400px; margin:0 auto; padding:1.5rem 3rem 3rem; }
+
+.model-bar { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:0.8rem 1.2rem; margin-bottom:1.2rem; display:flex; align-items:center; gap:1.2rem; flex-wrap:wrap; box-shadow:var(--shadow-card); }
+.model-bar-label { font-size:0.7rem; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.06em; white-space:nowrap; }
+.model-bar-base { display:flex; align-items:center; gap:0.4rem; padding:0.3rem 0.8rem; border-radius:7px; background:rgba(29,78,216,0.08); border:1px solid rgba(29,78,216,0.25); font-size:0.75rem; font-family:'JetBrains Mono',monospace; color:var(--accent-blue); font-weight:600; }
+.base-dot { width:7px; height:7px; border-radius:50%; background:var(--accent-blue); }
+.model-bar-divider { width:1px; height:24px; background:var(--border); }
+.adapter-cards { display:flex; gap:0.6rem; flex:1; }
+.adapter-card { flex:1; padding:0.5rem 0.9rem; border-radius:9px; cursor:pointer; border:1.5px solid var(--border); background:var(--bg-primary); transition:all 0.3s; }
+.adapter-card:hover { border-color:var(--accent-blue); }
+.adapter-card.active { border-color:var(--accent-green); box-shadow:0 0 0 2px rgba(4,120,87,0.15); background:rgba(4,120,87,0.06); }
+.adapter-card.loaded { border-color:rgba(109,40,217,0.4); }
+.adapter-card-top { display:flex; align-items:center; justify-content:space-between; }
+.adapter-card-name { font-size:0.75rem; font-weight:700; color:var(--text-primary); }
+.adapter-card-desc { font-size:0.63rem; color:var(--text-secondary); }
+.adapter-status { font-size:0.58rem; padding:2px 6px; border-radius:4px; font-weight:700; letter-spacing:0.04em; }
+.status-idle { background:#e5e7eb; color:var(--text-muted); }
+.status-loaded { background:rgba(109,40,217,0.1); color:var(--accent-purple); }
+.status-active { background:rgba(4,120,87,0.12); color:var(--accent-green); }
+.status-loading { background:rgba(180,83,9,0.1); color:var(--accent-orange); }
+
+.scenario-tabs { display:flex; gap:0.6rem; margin-bottom:1.2rem; }
+.scenario-tab { padding:0.65rem 1.5rem; border-radius:10px; cursor:pointer; border:1.5px solid var(--border); background:var(--bg-card); font-size:0.85rem; font-weight:700; color:var(--text-secondary); transition:all 0.3s; display:flex; align-items:center; gap:0.5rem; box-shadow:var(--shadow-card); }
+.scenario-tab:hover { border-color:var(--accent-blue); color:var(--text-primary); }
+.scenario-tab.active-ops { background:rgba(180,83,9,0.08); border-color:var(--accent-orange); color:var(--accent-orange); border-width:2px; }
+.scenario-tab.active-edu { background:rgba(4,120,87,0.08); border-color:var(--accent-green); color:var(--accent-green); border-width:2px; }
+.tab-badge { font-size:0.6rem; padding:2px 7px; border-radius:5px; background:#e5e7eb; color:var(--text-secondary); letter-spacing:0.06em; font-weight:600; }
+
+.content-grid { display:grid; grid-template-columns:1fr 400px; gap:1.5rem; align-items:start; }
+.panel { background:var(--bg-card); border:1.5px solid var(--border); border-radius:14px; overflow:hidden; transition:border-color 0.3s,box-shadow 0.3s; box-shadow:var(--shadow-card); }
+.panel:hover { border-color:rgba(29,78,216,0.35); box-shadow:var(--shadow-glow); }
+.panel-header { padding:1rem 1.2rem; border-bottom:1.5px solid var(--border); display:flex; align-items:center; justify-content:space-between; background:#f9fafb; }
+.panel-title { font-size:0.8rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--text-primary); }
+.panel-tag { font-size:0.65rem; padding:2px 8px; border-radius:5px; font-family:'JetBrains Mono',monospace; font-weight:700; }
+.tag-ops { background:rgba(180,83,9,0.12); color:var(--accent-orange); border:1px solid rgba(180,83,9,0.2); }
+.tag-edu { background:rgba(4,120,87,0.12); color:var(--accent-green); border:1px solid rgba(4,120,87,0.2); }
+.panel-body { padding:1.2rem; }
+
+/* Data Browser */
+.data-browser { background:var(--bg-card); border:1.5px solid var(--border); border-radius:12px; padding:1rem 1.2rem; margin-bottom:1.2rem; box-shadow:var(--shadow-card); }
+.data-browser-title { font-size:0.75rem; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.8rem; display:flex; align-items:center; gap:0.5rem; }
+.data-browser-row { display:flex; gap:0.6rem; align-items:flex-end; flex-wrap:wrap; }
+.data-browser-group { flex:1; min-width:140px; }
+.data-browser-group label { display:block; font-size:0.7rem; color:var(--text-secondary); margin-bottom:0.3rem; font-weight:600; }
+.data-browser-group select { width:100%; padding:0.5rem 0.7rem; background:var(--bg-primary); border:1.5px solid var(--border); border-radius:8px; color:var(--text-primary); font-size:0.78rem; outline:none; font-weight:500; }
+.data-browser-group select:focus { border-color:var(--accent-blue); }
+.data-browser-group select option { background:#fff; }
+.btn-load-sample { padding:0.5rem 1rem; border-radius:8px; cursor:pointer; border:1.5px solid rgba(109,40,217,0.35); background:rgba(109,40,217,0.08); color:var(--accent-purple); font-size:0.75rem; font-weight:700; transition:all 0.2s; white-space:nowrap; }
+.btn-load-sample:hover { background:rgba(109,40,217,0.15); }
+.btn-load-sample:disabled { opacity:0.4; cursor:not-allowed; }
+.sample-meta { margin-top:0.6rem; font-size:0.7rem; color:var(--text-secondary); display:flex; gap:1rem; flex-wrap:wrap; }
+.sample-meta span { background:#e5e7eb; padding:2px 8px; border-radius:5px; font-weight:500; }
+
+.form-group { margin-bottom:1rem; }
+.form-label { display:block; font-size:0.73rem; font-weight:500; color:var(--text-secondary); margin-bottom:0.4rem; }
+.form-textarea { width:100%; padding:0.6rem 0.8rem; background:var(--bg-primary); border:1.5px solid var(--border); border-radius:9px; color:var(--text-primary); font-family:'Inter',sans-serif; font-size:0.8rem; line-height:1.5; resize:vertical; outline:none; transition:border-color 0.2s; }
+.form-textarea:focus { border-color:var(--accent-blue); box-shadow:0 0 0 3px rgba(29,78,216,0.1); }
+.form-textarea.readonly-field { background:#e5e7eb; cursor:default; color:var(--text-secondary); }
+.form-textarea.readonly-field:focus { border-color:var(--border); box-shadow:none; }
+.form-textarea.sm { min-height:80px; }
+.form-textarea.md { min-height:120px; }
+.form-textarea.lg { min-height:160px; }
+
+.sub-title { font-size:0.78rem; font-weight:800; color:var(--text-primary); margin-bottom:0.7rem; display:flex; align-items:center; gap:0.4rem; }
+.dot { width:8px; height:8px; border-radius:50%; }
+.dot-o { background:var(--accent-orange); }
+.dot-g { background:var(--accent-green); }
+.dot-b { background:var(--accent-blue); }
+.dot-p { background:var(--accent-purple); }
+.divider { height:1.5px; background:var(--border); margin:0.4rem 0 1rem; }
+
+.btn-predict { width:100%; padding:0.9rem; border:none; border-radius:11px; font-size:0.9rem; font-weight:700; cursor:pointer; color:#fff; transition:all 0.3s; display:flex; align-items:center; justify-content:center; }
+.btn-predict-ops { background:var(--gradient-ops); }
+.btn-predict-edu { background:var(--gradient-edu); }
+.btn-predict:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(0,0,0,0.15); }
+.btn-predict:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+.spinner { display:none; width:18px; height:18px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:spin 0.8s linear infinite; margin-right:0.5rem; }
+.btn-predict.loading .spinner { display:inline-block; }
+@keyframes spin { to{transform:rotate(360deg)} }
+
+.scenario-content { display:none; }
+.scenario-content.active { display:block; }
+
+/* Result Panel */
+.result-panel { position:sticky; top:1.5rem; }
+.result-empty { text-align:center; padding:3rem 1.5rem; color:var(--text-muted); }
+.result-empty-icon { font-size:2.5rem; margin-bottom:0.8rem; opacity:0.3; }
+.result-empty p { font-size:0.8rem; }
+.result-content { display:none; }
+.result-content.visible { display:block; }
+.score-display { text-align:center; padding:1.5rem 1.2rem; border-bottom:1.5px solid var(--border); }
+.score-ring-container { width:160px; height:160px; margin:0 auto 1rem; position:relative; }
+.score-ring { width:100%; height:100%; transform:rotate(-90deg); }
+.score-ring-bg { fill:none; stroke:#dde1e8; stroke-width:10; }
+.score-ring-fill { fill:none; stroke-width:11; stroke-linecap:round; transition:stroke-dashoffset 1.5s ease-out; }
+.score-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.score-value { font-size:2.2rem; font-weight:900; line-height:1; }
+.score-range { font-size:0.8rem; font-weight:700; margin-top:0.3rem; padding:3px 12px; border-radius:5px; }
+.score-label { font-size:0.73rem; color:var(--text-secondary); margin-top:0.4rem; font-weight:600; }
+.risk-indicator { display:inline-flex; align-items:center; gap:0.4rem; padding:0.35rem 0.9rem; border-radius:7px; font-size:0.73rem; font-weight:700; margin-top:0.6rem; }
+.gt-badge { margin-top:0.5rem; font-size:0.73rem; color:var(--text-secondary); }
+.gt-badge b { color:var(--text-primary); font-family:'JetBrains Mono',monospace; font-weight:800; }
+
+.prob-section { padding:1.2rem; }
+.prob-title { font-size:0.73rem; font-weight:700; color:var(--text-primary); margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:0.04em; }
+.prob-bar-group { margin-bottom:0.6rem; }
+.prob-bar-header { display:flex; justify-content:space-between; margin-bottom:0.25rem; }
+.prob-bar-label { font-size:0.75rem; color:var(--text-primary); font-weight:500; }
+.prob-bar-value { font-size:0.75rem; font-weight:800; font-family:'JetBrains Mono',monospace; }
+.prob-bar-track { height:8px; border-radius:4px; background:#dde1e8; overflow:hidden; }
+.prob-bar-fill { height:100%; border-radius:4px; transition:width 1.2s ease-out; min-width:2px; }
+
+.meta-section { padding:0.8rem 1.2rem; border-top:1.5px solid var(--border); display:flex; gap:0.6rem; }
+.meta-item { flex:1; text-align:center; padding:0.5rem; border-radius:7px; background:#edf0f7; border:1px solid #dde1e8; }
+.meta-value { font-size:0.85rem; font-weight:800; font-family:'JetBrains Mono',monospace; color:var(--text-primary); }
+.meta-label { font-size:0.6rem; color:var(--text-secondary); margin-top:1px; font-weight:600; }
+
+.color-0{color:#b91c1c} .color-1{color:#b45309} .color-2{color:#1d4ed8} .color-3{color:#0e7490} .color-4{color:#047857}
+.fill-0{background:linear-gradient(90deg,#b91c1c,#dc2626)} .fill-1{background:linear-gradient(90deg,#b45309,#d97706)} .fill-2{background:linear-gradient(90deg,#1d4ed8,#2563eb)} .fill-3{background:linear-gradient(90deg,#0e7490,#0891b2)} .fill-4{background:linear-gradient(90deg,#047857,#059669)}
+.ring-0{stroke:#b91c1c} .ring-1{stroke:#b45309} .ring-2{stroke:#1d4ed8} .ring-3{stroke:#0e7490} .ring-4{stroke:#047857}
+.range-bg-0{background:rgba(185,28,28,0.12);color:#b91c1c;border:1px solid rgba(185,28,28,0.2)} .range-bg-1{background:rgba(180,83,9,0.12);color:#b45309;border:1px solid rgba(180,83,9,0.2)} .range-bg-2{background:rgba(29,78,216,0.12);color:#1d4ed8;border:1px solid rgba(29,78,216,0.2)} .range-bg-3{background:rgba(14,116,144,0.12);color:#0e7490;border:1px solid rgba(14,116,144,0.2)} .range-bg-4{background:rgba(4,120,87,0.12);color:#047857;border:1px solid rgba(4,120,87,0.2)}
+.risk-high{background:rgba(185,28,28,0.1);color:#b91c1c;border:1.5px solid rgba(185,28,28,0.3)} .risk-medium{background:rgba(180,83,9,0.1);color:#b45309;border:1.5px solid rgba(180,83,9,0.3)} .risk-low{background:rgba(4,120,87,0.1);color:#047857;border:1.5px solid rgba(4,120,87,0.3)}
+@keyframes fadeInUp { from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} }
+.animate-in { animation:fadeInUp 0.4s ease-out; }
+
+.toast { position:fixed; top:1.2rem; right:1.2rem; z-index:999; padding:0.7rem 1.1rem; border-radius:9px; font-size:0.78rem; font-weight:500; transform:translateX(120%); transition:transform 0.4s ease; max-width:360px; }
+.toast.show { transform:translateX(0); }
+.toast-success { background:#ecfdf5; border:1.5px solid rgba(4,120,87,0.35); color:var(--accent-green); font-weight:600; }
+.toast-info { background:#eff6ff; border:1.5px solid rgba(29,78,216,0.35); color:var(--accent-blue); font-weight:600; }
+.toast-error { background:#fef2f2; border:1.5px solid rgba(185,28,28,0.35); color:var(--accent-red); font-weight:600; }
+
+@media(max-width:1024px) { .content-grid{grid-template-columns:1fr} .result-panel{position:static} header,.main-container{padding-left:1.2rem;padding-right:1.2rem} }
+</style>
+</head>
+<body>
+<div class="bg-grid"></div><div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div>
+<div id="toast" class="toast"></div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">CG</div>
+      <div class="logo-text">
+        <h1>CogGuard</h1>
+        <p>Efficient Cognitive Graph Profiling for Proactive Behavior Warning</p>
+      </div>
+    </div>
+    <div class="health-badge"><div class="health-dot"></div><span id="healthText">Connecting...</span></div>
+  </div>
+</header>
+
+<div class="main-container">
+  <!-- Model Bar -->
+  <div class="model-bar">
+    <span class="model-bar-label">Base</span>
+    <div class="model-bar-base"><span class="base-dot"></span>Qwen2.5-3B-Instruct</div>
+    <div class="model-bar-divider"></div>
+    <span class="model-bar-label">LoRA</span>
+    <div class="adapter-cards">
+      <div class="adapter-card" id="adapterCard-ops" onclick="loadAdapterClick('ops')">
+        <div class="adapter-card-top"><span class="adapter-card-name">&#9881; AIOps</span><span class="adapter-status status-idle" id="adapterStatus-ops">NOT LOADED</span></div>
+        <div class="adapter-card-desc">Chaos engineering prediction</div>
+      </div>
+      <div class="adapter-card" id="adapterCard-edu" onclick="loadAdapterClick('edu')">
+        <div class="adapter-card-top"><span class="adapter-card-name">&#9733; Education</span><span class="adapter-status status-idle" id="adapterStatus-edu">NOT LOADED</span></div>
+        <div class="adapter-card-desc">Student score prediction</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="scenario-tabs">
+    <div class="scenario-tab active-ops" id="tabOps" onclick="switchScenario('ops')"><span>&#9881; AIOps</span><span class="tab-badge">CHAOS ENGINEERING</span></div>
+    <div class="scenario-tab" id="tabEdu" onclick="switchScenario('edu')"><span>&#9733; Education</span><span class="tab-badge">LEARNING ANALYTICS</span></div>
+  </div>
+
+  <div class="content-grid">
+    <div>
+      <!-- ========== OPS ========== -->
+      <div class="scenario-content active" id="scenarioOps">
+        <div class="data-browser" id="opsBrowser">
+          <div class="data-browser-title">&#128194; Test Data Browser</div>
+          <div class="data-browser-row">
+            <div class="data-browser-group"><label>Host Machine</label><select id="opsHostSel" onchange="onOpsHostChange()"><option value="">-- Select Host --</option></select></div>
+            <div class="data-browser-group" style="flex:2"><label>Test Scenario</label><select id="opsSampleSel"><option value="">-- Select Scenario --</option></select></div>
+            <button class="btn-load-sample" id="btnLoadOps" onclick="loadOpsSampleFromData()" disabled>Load</button>
+          </div>
+          <div class="sample-meta" id="opsSampleMeta"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><span class="panel-title">Input</span><span class="panel-tag tag-ops">OPS</span></div>
+          <div class="panel-body">
+            <div class="sub-title"><span class="dot dot-o"></span> Task Description (src) <span style="font-size:0.65rem;font-weight:400;color:var(--accent-blue);margin-left:0.4rem">&#x1F512; Load from browser</span></div>
+            <div class="form-group"><textarea class="form-textarea lg readonly-field" id="opsSrc" placeholder="&#8592; Please select a host and scenario from Test Data Browser above, then click Load." readonly></textarea></div>
+            <div class="divider"></div>
+            <div class="sub-title"><span class="dot dot-b"></span> Hardware Profile (Entity Graph)</div>
+            <div class="form-group"><textarea class="form-textarea md" id="opsEg" placeholder="Hardware specifications..."></textarea></div>
+            <div class="divider"></div>
+            <div class="sub-title"><span class="dot dot-p"></span> Fault Injection (Knowledge Graph)</div>
+            <div class="form-group"><textarea class="form-textarea md" id="opsKg" placeholder="Fault injection pattern..."></textarea></div>
+            <button class="btn-predict btn-predict-ops" id="btnPredictOps" onclick="predict('ops')"><span class="spinner"></span><span>&#9889; Predict Performance</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== EDU ========== -->
+      <div class="scenario-content" id="scenarioEdu">
+        <div class="data-browser" id="eduBrowser">
+          <div class="data-browser-title">&#128194; Test Data Browser</div>
+          <div class="data-browser-row">
+            <div class="data-browser-group"><label>Student</label><select id="eduStudentSel" onchange="onEduStudentChange()"><option value="">-- Select Student --</option></select></div>
+            <div class="data-browser-group" style="flex:2"><label>Problem Record</label><select id="eduSampleSel"><option value="">-- Select Record --</option></select></div>
+            <button class="btn-load-sample" id="btnLoadEdu" onclick="loadEduSampleFromData()" disabled>Load</button>
+          </div>
+          <div class="sample-meta" id="eduSampleMeta"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-header"><span class="panel-title">Input</span><span class="panel-tag tag-edu">EDU</span></div>
+          <div class="panel-body">
+            <div class="sub-title"><span class="dot dot-g"></span> Problem & Student Ability (src) <span style="font-size:0.65rem;font-weight:400;color:var(--accent-blue);margin-left:0.4rem">&#x1F512; Load from browser</span></div>
+            <div class="form-group"><textarea class="form-textarea lg readonly-field" id="eduSrc" placeholder="&#8592; Please select a student and record from Test Data Browser above, then click Load." readonly></textarea></div>
+            <div class="divider"></div>
+            <div class="sub-title"><span class="dot dot-b"></span> Entity Graph (Topic-level Knowledge)</div>
+            <div class="form-group"><textarea class="form-textarea md" id="eduEg" placeholder="Student knowledge summary - entity graph..."></textarea></div>
+            <div class="divider"></div>
+            <div class="sub-title"><span class="dot dot-p"></span> Knowledge Graph (Category-level Knowledge)</div>
+            <div class="form-group"><textarea class="form-textarea md" id="eduKg" placeholder="Student knowledge summary - knowledge graph..."></textarea></div>
+            <button class="btn-predict btn-predict-edu" id="btnPredictEdu" onclick="predict('edu')"><span class="spinner"></span><span>&#9733; Predict Student Score</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div class="panel result-panel">
+      <div class="panel-header"><span class="panel-title">Prediction Result</span><span class="panel-tag" id="resultTag" style="display:none"></span></div>
+      <div class="result-empty" id="resultEmpty"><div class="result-empty-icon">&#128300;</div><p>Select a test sample or input data<br>then click predict.</p></div>
+      <div class="result-content" id="resultContent">
+        <div class="score-display">
+          <div class="score-ring-container">
+            <svg class="score-ring" viewBox="0 0 200 200">
+              <circle class="score-ring-bg" cx="100" cy="100" r="85"></circle>
+              <circle class="score-ring-fill" id="scoreRingFill" cx="100" cy="100" r="85" stroke-dasharray="534" stroke-dashoffset="534"></circle>
+            </svg>
+            <div class="score-center"><div class="score-value" id="scoreValue">--</div><div class="score-range" id="scoreRange">-</div></div>
+          </div>
+          <div class="score-label" id="scoreLabel">Predicted Score</div>
+          <div class="risk-indicator" id="riskIndicator" style="display:none"><span id="riskIcon"></span><span id="riskText"></span></div>
+          <div class="gt-badge" id="gtBadge" style="display:none">Ground Truth: <b id="gtValue"></b></div>
+        </div>
+        <div class="prob-section"><div class="prob-title">Probability Distribution</div><div id="probBars"></div></div>
+        <div class="meta-section">
+          <div class="meta-item"><div class="meta-value" id="metaTokens">-</div><div class="meta-label">Tokens</div></div>
+          <div class="meta-item"><div class="meta-value" id="metaConf">-</div><div class="meta-label">Confidence</div></div>
+          <div class="meta-item"><div class="meta-value" id="metaAdapter">-</div><div class="meta-label">Adapter</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentScenario='ops', adapterState={}, currentGT=null;
+
+function showToast(m,t='info'){const e=document.getElementById('toast');e.textContent=m;e.className='toast toast-'+t+' show';setTimeout(()=>e.classList.remove('show'),3000)}
+
+async function refreshAdapterState(){
+  try{const r=await fetch('/api/adapters');const d=await r.json();adapterState=d.adapters;
+    for(const[id,info]of Object.entries(d.adapters)){const c=document.getElementById('adapterCard-'+id),s=document.getElementById('adapterStatus-'+id);c.classList.remove('active','loaded');
+      if(info.active){c.classList.add('active');s.textContent='ACTIVE';s.className='adapter-status status-active'}
+      else if(info.loaded){c.classList.add('loaded');s.textContent='LOADED';s.className='adapter-status status-loaded'}
+      else{s.textContent='NOT LOADED';s.className='adapter-status status-idle'}}
+    document.getElementById('healthText').textContent=d.active?'Active: '+d.active.toUpperCase():'Base Model Ready';
+  }catch(e){document.getElementById('healthText').textContent='Error'}
+}
+
+async function loadAdapterClick(id){
+  if(adapterState[id]&&adapterState[id].active){showToast(id.toUpperCase()+' already active','info');return}
+  document.getElementById('adapterStatus-'+id).textContent='LOADING...';document.getElementById('adapterStatus-'+id).className='adapter-status status-loading';
+  showToast('Loading '+id.toUpperCase()+' adapter...','info');
+  try{const r=await fetch('/api/adapters/load',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({adapter_id:id})});const d=await r.json();
+    if(d.success){showToast(id.toUpperCase()+' adapter activated!','success');switchScenario(id)}else showToast('Failed: '+d.error,'error');
+  }catch(e){showToast('Error: '+e.message,'error')}
+  await refreshAdapterState();
+}
+
+function switchScenario(s){currentScenario=s;
+  document.getElementById('scenarioOps').classList.toggle('active',s==='ops');
+  document.getElementById('scenarioEdu').classList.toggle('active',s==='edu');
+  document.getElementById('tabOps').className='scenario-tab'+(s==='ops'?' active-ops':'');
+  document.getElementById('tabEdu').className='scenario-tab'+(s==='edu'?' active-edu':'');
+}
+
+// ========== Data Browser ==========
+async function initDataBrowser(){
+  try{
+    const[eduR,opsR]=await Promise.all([fetch('/api/data/edu/students'),fetch('/api/data/ops/hosts')]);
+    const eduD=await eduR.json(), opsD=await opsR.json();
+    const es=document.getElementById('eduStudentSel');
+    eduD.students.forEach(s=>{const o=document.createElement('option');o.value=s.user_id;o.textContent=`Student ${s.user_id} (${s.count} records)`;es.appendChild(o)});
+    const os=document.getElementById('opsHostSel');
+    opsD.hosts.forEach(h=>{const o=document.createElement('option');o.value=h.host;o.textContent=`${h.host} (${h.count} scenarios, ${h.task_types.join('/')})`;os.appendChild(o)});
+  }catch(e){console.error(e)}
+}
+
+async function onEduStudentChange(){
+  const uid=document.getElementById('eduStudentSel').value;
+  const sel=document.getElementById('eduSampleSel');sel.innerHTML='<option value="">-- Select Record --</option>';
+  document.getElementById('btnLoadEdu').disabled=true;document.getElementById('eduSampleMeta').innerHTML='';
+  if(!uid)return;
+  const r=await fetch('/api/data/edu/samples?user_id='+uid);const d=await r.json();
+  d.samples.forEach(s=>{const o=document.createElement('option');o.value=s.idx;o.textContent=`${s.problem_name} | ${s.timestamp} | score:${s.label}`;sel.appendChild(o)});
+  document.getElementById('btnLoadEdu').disabled=false;
+}
+
+async function onOpsHostChange(){
+  const h=document.getElementById('opsHostSel').value;
+  const sel=document.getElementById('opsSampleSel');sel.innerHTML='<option value="">-- Select Scenario --</option>';
+  document.getElementById('btnLoadOps').disabled=true;document.getElementById('opsSampleMeta').innerHTML='';
+  if(!h)return;
+  const r=await fetch('/api/data/ops/samples?host='+h);const d=await r.json();
+  d.samples.forEach(s=>{const o=document.createElement('option');o.value=s.idx;
+    const status=String(s.success)==='True'?'OK':'FAIL';
+    o.textContent=`#${s.scenario_id} | ${s.task_type} | ${s.fault_types} | ${status} | score:${typeof s.label==='number'?s.label.toFixed(1):s.label}`;sel.appendChild(o)});
+  document.getElementById('btnLoadOps').disabled=false;
+}
+
+async function loadEduSampleFromData(){
+  const idx=document.getElementById('eduSampleSel').value;
+  if(!idx&&idx!==0)return;
+  const r=await fetch('/api/data/edu/detail/'+idx);const d=await r.json();
+  if(!d.success)return;
+  document.getElementById('eduSrc').value=d.src;
+  document.getElementById('eduEg').value=d.entity_graph;
+  document.getElementById('eduKg').value=d.knowledge_graph;
+  currentGT=d.label;
+  document.getElementById('eduSampleMeta').innerHTML=`<span>Student: ${d.user_id}</span><span>Problem: ${d.problem_name}</span><span>Time: ${d.timestamp}</span><span>Label: ${d.label}</span>`;
+  showToast('Sample loaded','success');
+}
+
+async function loadOpsSampleFromData(){
+  const idx=document.getElementById('opsSampleSel').value;
+  if(!idx&&idx!==0)return;
+  const r=await fetch('/api/data/ops/detail/'+idx);const d=await r.json();
+  if(!d.success)return;
+  document.getElementById('opsSrc').value=d.src;
+  document.getElementById('opsEg').value=d.hardware_profile;
+  document.getElementById('opsKg').value=d.fault_pattern;
+  currentGT=d.label;
+  document.getElementById('opsSampleMeta').innerHTML=`<span>Host: ${d.host}</span><span>Scenario: #${d.scenario_id}</span><span>Type: ${d.task_type}</span><span>Faults: ${d.fault_types}</span><span>Label: ${typeof d.label==='number'?d.label.toFixed(1):d.label}</span>`;
+  showToast('Sample loaded','success');
+}
+
+// ========== Prediction ==========
+function showResult(result,scenario){
+  document.getElementById('resultEmpty').style.display='none';
+  const rc=document.getElementById('resultContent');rc.style.display='block';rc.className='result-content visible animate-in';
+  const tag=document.getElementById('resultTag');tag.style.display='inline-block';tag.className='panel-tag '+(scenario==='ops'?'tag-ops':'tag-edu');tag.textContent=scenario.toUpperCase();
+  const cls=result.predicted_class,val=result.predicted_value,range=result.predicted_range;
+  document.getElementById('scoreValue').textContent=val;document.getElementById('scoreValue').className='score-value color-'+cls;
+  document.getElementById('scoreRange').textContent=range;document.getElementById('scoreRange').className='score-range range-bg-'+cls;
+  const circ=2*Math.PI*85,off=circ-(val/100)*circ,ring=document.getElementById('scoreRingFill');
+  ring.setAttribute('stroke-dasharray',circ);ring.setAttribute('stroke-dashoffset',circ);ring.className.baseVal='score-ring-fill ring-'+cls;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>ring.setAttribute('stroke-dashoffset',off)));
+  document.getElementById('scoreLabel').textContent=scenario==='ops'?'Predicted Performance':'Predicted Student Score';
+  const re=document.getElementById('riskIndicator');re.style.display='inline-flex';
+  if(cls<=1){re.className='risk-indicator risk-high';document.getElementById('riskIcon').textContent='\u26A0';document.getElementById('riskText').textContent=scenario==='ops'?'High Failure Risk':'Needs Attention'}
+  else if(cls===2){re.className='risk-indicator risk-medium';document.getElementById('riskIcon').textContent='\u26A0';document.getElementById('riskText').textContent='Moderate'}
+  else{re.className='risk-indicator risk-low';document.getElementById('riskIcon').textContent='\u2713';document.getElementById('riskText').textContent='Good Performance'}
+
+  const gb=document.getElementById('gtBadge');
+  if(currentGT!==null){gb.style.display='block';document.getElementById('gtValue').textContent=typeof currentGT==='number'?currentGT.toFixed(1):currentGT}
+  else gb.style.display='none';
+
+  const pc=document.getElementById('probBars');pc.innerHTML='';
+  const ranges=['0-20','20-40','40-60','60-80','80-100'],mx=Math.max(...ranges.map(r=>result.probabilities[r]));
+  ranges.forEach((r,i)=>{const p=result.probabilities[r],is=i===cls,g=document.createElement('div');g.className='prob-bar-group';
+    g.innerHTML=`<div class="prob-bar-header"><span class="prob-bar-label" style="${is?'color:var(--text-primary);font-weight:700':''}">${r}${is?' &#9668;':''}</span><span class="prob-bar-value color-${i}">${p.toFixed(1)}%</span></div><div class="prob-bar-track"><div class="prob-bar-fill fill-${i}" style="width:0%;${is?'box-shadow:0 0 8px rgba(59,130,246,0.3)':'opacity:0.6'}"></div></div>`;
+    pc.appendChild(g);requestAnimationFrame(()=>requestAnimationFrame(()=>g.querySelector('.prob-bar-fill').style.width=(p/Math.max(mx,1))*100+'%'))});
+  document.getElementById('metaTokens').textContent=result.input_length;
+  document.getElementById('metaConf').textContent=Math.max(...Object.values(result.probabilities)).toFixed(1)+'%';
+  document.getElementById('metaAdapter').textContent=(result.adapter||scenario).toUpperCase();
+}
+
+async function predict(scenario){
+  const srcId=scenario==='ops'?'opsSrc':'eduSrc',egId=scenario==='ops'?'opsEg':'eduEg',kgId=scenario==='ops'?'opsKg':'eduKg';
+  if(!document.getElementById(srcId).value.trim()){showToast('Please load a test sample from the Data Browser first.','error');return}
+  const btn=document.getElementById(scenario==='ops'?'btnPredictOps':'btnPredictEdu');btn.classList.add('loading');btn.disabled=true;
+  try{
+    const r=await fetch('/api/predict/'+scenario,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({src_text:document.getElementById(srcId).value,eg_text:document.getElementById(egId).value,kg_text:document.getElementById(kgId).value})});
+    const d=await r.json();
+    if(d.success){showResult(d.result,scenario);await refreshAdapterState()}else showToast('Failed: '+d.error,'error');
+  }catch(e){showToast('Error: '+e.message,'error')}
+  btn.classList.remove('loading');btn.disabled=false;
+}
+
+// Init
+refreshAdapterState();initDataBrowser();
+</script>
+</body>
+</html>

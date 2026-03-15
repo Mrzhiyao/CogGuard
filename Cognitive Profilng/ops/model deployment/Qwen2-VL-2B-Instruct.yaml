@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image2text-981
+  namespace: vllm-k8s-operator-system  # 指定命名空间
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image2text-981
+  template:
+    metadata:
+      labels:
+        app: image2text-981
+    spec:
+      containers:
+        - name: image2text-981
+          image: lmdeploy-new:v0.6.4-cu11
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 23333
+          volumeMounts:
+            - name: model-volume
+              mountPath: /root/.cache/modelscope/Qwen2-VL-2B-Instruct  # 挂载路径
+              subPath: Qwen2-VL-2B-Instruct
+          command: ["/bin/bash", "-c", "lmdeploy serve api_server /root/.cache/modelscope/Qwen2-VL-2B-Instruct --model-name=\"qwen2-vl-2b\" --tp=1 --cache-max-entry-count=0.1"]
+      dnsPolicy: ClusterFirst
+      nodeName: 4090d
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      volumes:
+        - name: model-volume
+          persistentVolumeClaim:
+            claimName: model-pvc  # PVC 名称
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: image2text-981-service
+  namespace: vllm-k8s-operator-system  # 指定命名空间
+spec:
+  type: NodePort
+  ports:
+    - port: 23333
+      targetPort: 23333
+      nodePort: 31782 # 根据需要调整 NodePort
+  selector:
+    app: image2text-981

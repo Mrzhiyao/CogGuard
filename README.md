@@ -1,18 +1,9 @@
-# CogGuard Project Documentation
+# CogGuard 
 
-This document describes the main workflow of the CogGuard project, which contains two modules: Cognitive Profiling and Profile-to-Score Alignment.
+This document describes the main workflow of the CogGuard, which contains two modules: Cognitive Profiling and Profile-to-Score Alignment.
 
 ![Demo Screenshot](demo/img/demo.png)
 
-## Before You Start
-
-- Recommended environment: Python 3.10+.
-- On Windows, it is recommended to run `.sh` scripts with Git Bash or WSL.
-- The repository folder name is currently `Cognitive Profilng` in the codebase. The spelling is kept as-is below to match the actual files.
-- This README focuses on the main workflow and script order. Some training/inference scripts still require environment-specific settings such as multi-machine paths, Docker/K8s deployment, or model checkpoints.
-- The demo frontend uses relative paths by default. Demo data is expected under `demo/datas/`.
-
----
 
 # Dataset
 

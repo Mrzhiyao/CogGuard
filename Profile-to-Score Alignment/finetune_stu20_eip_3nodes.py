@@ -1294,7 +1294,7 @@ def main():
         # ray的设备参数
         "use_gpu": True,
         "num_workers": 3,
-        "checkpoint_path": f"/nas/Qwen2.5-3B-Tnstruct_lora/{t}",
+        "checkpoint_path": f"/path/to/lora_checkpoints/{t}",
         #LoRA训练参数 
         "task_type": TaskType.SEQ_CLS,  
         "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],

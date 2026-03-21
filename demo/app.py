@@ -17,33 +17,26 @@ CLASS_TO_SCORE_RANGE = {0: "0-20", 1: "20-40", 2: "40-60", 3: "60-80", 4: "80-10
 CLASS_TO_VALUE = {0: 10, 1: 30, 2: 50, 3: 70, 4: 90}
 SCORE_START_TOKEN = 151666
 
-DEMO_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_DIR = os.path.join(DEMO_DIR, "models")
-
-
-def resolve_path(*parts, env_var=None):
-    if env_var and os.environ.get(env_var):
-        return os.path.abspath(os.environ[env_var])
-    return os.path.abspath(os.path.join(*parts))
-
-
-BASE_MODEL_PATH = resolve_path(MODEL_DIR, "Qwen2.5-3B-Instruct", env_var="COGGUARD_BASE_MODEL_PATH")
+DEMO_DIR = os.path.dirname(__file__)
+_DEMO_DIR = DEMO_DIR
+BASE_MODEL_PATH = os.path.join(DEMO_DIR, "base_model", "Qwen2.5-3B-Instruct")
 MARK_TOKENS = ["<MARK_L>", "<MARK_R>", "<MARK_EG>", "<MARK_KG>"]
 
 DATA_DIR = os.path.join(DEMO_DIR, "datas")
 EDU_DATA_FILE = os.path.join(DATA_DIR, "test_raw_40_new.jsonl")
 OPS_DATA_FILE = os.path.join(DATA_DIR, "test_raw_ops.jsonl")
 
+_CKPT_DIR = os.path.join(_DEMO_DIR, "checkpoints")
 LORA_REGISTRY = {
     "ops": {
         "name": "AIOps - Chaos Engineering",
-        "path": resolve_path(MODEL_DIR, "lora", "ops", "checkpoint", env_var="COGGUARD_OPS_LORA_PATH"),
+        "path": os.path.join(_CKPT_DIR, "ops", "Qwen2.5-3B-Instruct"),
         "scenario": "ops",
         "description": "Predicts task execution score under chaos fault injection",
     },
     "edu": {
         "name": "Education - Student Score",
-        "path": resolve_path(MODEL_DIR, "lora", "edu", "checkpoint", env_var="COGGUARD_EDU_LORA_PATH"),
+        "path": os.path.join(_CKPT_DIR, "edu", "Qwen2.5-3B-Instruct", "stu20_node3"),
         "scenario": "edu",
         "description": "Predicts student performance score based on knowledge profile",
     },

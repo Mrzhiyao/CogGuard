@@ -1,0 +1,458 @@
+scenario_id,success,total_time,file_read_time,task_time,fault_count,recovery_count,error_msg,skip_reason,task_result,timestamp
+350,False,80.24,1.98,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+351,False,49.67,0.55,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+352,False,274.19,5.03,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+353,False,67.59,0.56,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+354,True,52.00,0.58,2.60,4,4,,,"这段内容总结如下：
+
+本文提出了一个新的简单的网络架构——Transformer，用于处理序列转换任务，如机器翻译。文章的作者们来自包括Google Brain、Google Research、Google和多伦多大学等机构。主要作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez和Łukasz Kaiser。
+
+Transformer模型的核心特点是它的解码器和编码器之间的注意力机制（Attention Mechanism），取代了传统模型中复杂的递归网络或卷积网络。这种设计使得Transformer能够直接从输入序列中学习到长距离依赖关系，而不需要通过递归或卷积来逐个处理序列中的每个元素。此外，该模型结构简单且易于并行化，这使得对于大规模的数据集进行训练变得更加容易。
+
+文章的作者们声称，基于注意力机制的Transformer模型在一些序列转换任务上表现出色，超过了使用复杂递归和/或卷积结构的传统模型。",2025-10-31 17:54:12
+355,True,94.13,2.38,2.69,5,5,,,"这段文字展示了《Attention Is All You Need》论文的基本信息，以及该论文的作者团队。以下是内容的总结：
+
+### 论文标题
+《Attention Is All You Need》
+
+### 作者和联系邮箱
+- Ashish Vaswani (vaswani@google.com)
+- Noam Shazeer (noam@google.com)
+- Niki Parmar (nikip@google.com)
+- Jakob Uszkoreit (usz@google.com)
+- Llion Jones (llion@google.com)
+- Aidan N. Gomez (aidan@cs.toronto.edu)
+- Łukasz Kaiser (lukaszkaiser@google.com)
+- Illia Polosukhin (illia.polosukhin@gmail.com)
+
+### 论文摘要
+目前，最先进的序列转换模型主要基于复杂的递归神经网络（RNN）或卷积神经网络（CNN），这些模型包括编码器和解码器两部分。最好的模型还通过某种方式连接编码器和解码器。
+
+### 研究成果
+该论文提出了一种新颖的简单网络架构——Transformer，旨在解决现有模型复杂性高以及连接编码器和解码器过程的复杂性问题，从而简化模型的设计和训练过程，同时保持或提升模型的性能。",2025-10-31 17:54:12
+356,True,106.00,2.26,3.10,5,5,,,"这段文字提到了一篇论文《Attention Is All You Need》的相关信息。以下是内容的总结：
+
+- **论文标题**：Attention Is All You Need
+- **作者**：Ashish Vaswani∗, Noam Shazeer∗, Niki Parmar∗, Jakob Uszkoreit∗, Llion Jones∗, Aidan N. Gomez∗, Łukasz Kaiser∗, Ilia Polosukhin∗
+- **作者联系信息**：
+  - Ashish Vaswani: avaswani@google.com
+  - Noam Shazeer: noam@google.com
+  - Niki Parmar: nikip@google.com
+  - Jakob Uszkoreit: usz@google.com
+  - Llion Jones: llion@google.com
+  - Aidan N. Gomez: aidan@cs.toronto.edu
+  - Łukasz Kaiser: lukaszkaiser@google.com
+  - Ilia Polosukhin: illia.polosukhin@gmail.com
+- **摘要**：说明了当前占据主导地位的序列转换模型是基于复杂的递归或卷积神经网络，这些模型包括编码器和解码器。最好的表现模型还通过某种方式连接编码器和解码器。本文提出了一种新的简单网络架构，即Transformer。
+
+论文标题中的""Attention Is All You Need""暗示了该模型中注意力机制的重要性，表明这种架构中注意力机制足以满足大多数序列转换任务的需求。",2025-10-31 17:54:12
+357,True,51.32,0.56,1.50,5,5,,,"这篇论文题为""Attention Is All You Need""，作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser以及Illia Polosukhin。这篇论文提出了一种新的简单网络架构，该架构使用注意力（Attention）机制显著简化了序列转换模型，使得这些模型的复杂性大大降低，同时保持了甚至超过了现有模型的性能。这种新的模型架构被称为Transformer，它取消了传统的基于递归或卷积的复杂网络结构，而使用注意力机制来处理输入序列，使得模型在理解和生成序列数据时更加高效和灵活。",2025-10-31 17:54:12
+358,False,270.05,5.02,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+359,True,51.02,0.53,1.28,5,5,,,这篇论文的标题是《Attention Is All You Need》，作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser和Illia Polosukhin。这篇论文旨在提出一种新的简单网络架构，该架构是基于注意力机制的，用于序列转换任务，如机器翻译。尽管当前最先进的模型结合了编码器和解码器，并通过某种机制进行连接，但此论文提出了一种新的简单网络架构，旨在简化现有的复杂模型结构。,2025-10-31 17:54:12
+360,True,10.63,0.57,1.57,2,2,,,"这篇论文题为《Attention Is All You Need》，由Google Brain和Google Research的研究人员撰写，包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser以及Illia Polosukhin。
+
+论文介绍了新的简单网络架构，该架构仅包含一个编码器和一个解码器，并且通过一种称为""注意力机制""的机制连接这两个部分。作者提出了一个更简单的模型，旨在与目前流行的复杂递归或卷积神经网络（RNN/CNN）模型相比，保持甚至超越其性能。该论文阐述了注意力机制如何帮助模型更好地理解输入序列，同时保持模型的简单性。",2025-10-31 17:54:12
+361,True,31.25,18.02,2.07,3,3,,,这段文本是关于一篇名为《Attention Is All You Need》的研究论文的摘要，该论文由来自Google Brain和Google Research的多位作者撰写。这是一篇关于深度学习领域的重要论文，它提出了一个使用注意力机制的简单网络架构，用于序列转换任务。论文的主要作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser和Illia Polosukhin。文中指出，当前最有效的序列转换模型通常结合了复杂的循环神经网络（RNN）或卷积神经网络（CNN），并包含一个编码器和一个解码器。其中，最佳模型之一通过注意力机制连接编码器和解码器。该论文提出了一种新的简单网络架构，以期通过注意力机制实现更简单的模型设计，同时保持或提升性能。论文尚未完成，提到他们正在继续研究这种架构的功能和应用。,2025-10-31 17:54:12
+362,True,15.93,2.56,2.26,3,3,,,"这篇文章的标题是《Attention Is All You Need》。这是一篇关于自然语言处理模型的论文，主要介绍了基于Transformer架构的简单有效模型。Transformer架构不使用递归神经网络（RNN）或卷积神经网络（CNN）的复杂性，而是通过注意力机制来处理序列数据。这篇文章的主要作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit和Llion Jones，他们分别来自Google Brain、Google Brain、Google Research和Google Research。此外，还有其他作者参与了该研究，包括Llion Jones、Aidan N. Gomez、Łukasz Kaiser和Illia Polosukhin，他们分别来自Google Research、University of Toronto和Google Brain。Illia Polosukhin也提交了通讯作者的邮箱地址。
+
+文章提出了一个新的简单网络架构，即Transformer（T），它展示了在自然语言处理任务上的强大性能，尤其是在机器翻译任务中。Transformer通过使用注意力机制来解决自然语言处理中的序列建模问题，而无需递归或卷积操作复杂网络。",2025-10-31 17:54:12
+363,True,13.74,0.49,2.13,3,3,,,"这段文字是关于一篇名为《Attention Is All You Need》的论文的摘要。以下是主要内容的总结：
+
+论文标题:《Attention Is All You Need》
+
+作者:论文共有七位作者，包括来自Google Brain、Google Research、Google、University of Toronto、以及Google Brain的多位研究人员。
+
+摘要:本文提出了一种新的简单网络架构，旨在简化现有的复杂序列转换模型，这些模型通常包含编码器和解码器，且最佳模型通过注意机制连接编码器和解码器。本文介绍了一种名为“Transformer”的新型架构，该模型摒弃了传统模型中的循环神经网络（RNN）或卷积神经网络（CNN）的复杂结构，仅保留编码器和解码器两部分，通过注意机制来改善信息的传递和理解，以简化模型并提高性能。
+
+总结来说，该论文提出了一个基于简单架构的注意力机制模型（Transformer），旨在简化序列转换模型，并通过实验表明该模型在某些任务上的性能优于传统的基于循环或卷积的模型。",2025-10-31 17:54:12
+364,False,16.09,5.02,0.00,3,3,文件读取失败,,,2025-10-31 17:54:12
+365,True,13.15,0.54,1.64,3,3,,,"这篇论文的标题是《Attention Is All You Need》。作者团队来自Google Brain、Google Research和University of Toronto。文章探讨了当前用于序列转换模型（如机器翻译）的主要架构，这些模型通常包含编码器和解码器，并且最佳模型通过注意力机制连接编码器和解码器。
+
+论文提出了一种新颖的简单网络架构，旨在通过简化模型结构来提高性能，同时仍然能够包含注意力机制的关键思想。他们认为，通过这种方式，可以减少模型复杂度，同时保持或提升模型的性能。
+
+这篇论文的主要贡献在于提出了一个新的简单网络架构，该架构在保留注意力机制优势的同时，简化了模型的复杂性。这使得模型在训练和执行时更加高效，并且可能更容易实现和解释。",2025-10-31 17:54:12
+366,False,12.60,0.52,0.00,3,3,文件读取失败,,,2025-10-31 17:54:12
+367,False,75.28,4.37,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+368,False,17.48,1.71,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+369,False,15.31,0.57,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+350,False,91.63,5.05,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+371,False,15.10,0.55,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+372,True,14.50,0.53,1.88,3,3,,,"这篇文档摘自一篇学术论文的摘要，标题为《Attention Is All You Need》。这篇论文的作者包括来自Google Brain、Google Research和University of Toronto的研究人员。以下是内容的总结：
+
+摘要主要介绍了一种新的简单网络架构，即Transformer，用于处理序列数据传输任务。这种架构摒弃了复杂的递归或卷积神经网络设计，仅包含编码器和解码器两部分。论文提出，通过引入注意力机制，这种新的网络架构在性能上能够与最先进且复杂的模型相媲美。作者认为，与传统模型相比，Transformer架构显著简化了模型结构，使其更易于理解和实现。
+
+这篇论文提出了一个创新的神经网络架构，即Transformer，强调了注意力机制对于序列任务的重要性，并展示了这种架构在表现上的优越性。Transformer的提出，开启了AI领域对于神经网络架构重新理解和改进的一个新阶段。",2025-10-31 17:54:12
+373,True,44.67,17.90,1.98,4,4,,,"这篇论文的题目是《Attention Is All You Need》，主要介绍了一种新的简单网络架构，提出了在序列转换任务（如机器翻译）中使用注意力机制（Attention）能够取得令人瞩目的效果。文中所提及的作者团队来自Google Brain、Google Research、Google Research以及University of Toronto。
+
+论文摘要概述了现有的基于复杂RNN（递归神经网络）或CNN（卷积神经网络）的序列转换模型，这种模型通常包含一个编码器和一个解码器，并且会通过某种方式将编码器和解码器连接起来。而文中提到的研究则提出了一种新的简单网络架构，它通过引入注意力机制（Attention）来提高模型的性能。
+
+论文提出了使用注意力机制的新网络架构，并且表明这种结构能够显著提高模型在序列转换任务中的表现。不过，关于详细的网络架构设计、注意力机制的具体实现方式以及实验结果等方面的具体内容，需要查阅完整的论文来获取。",2025-10-31 17:54:12
+374,False,40.57,20.02,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+375,True,19.18,0.55,3.89,4,4,,,"这篇文章的摘要来自一篇关于自然语言处理领域的论文，题为《《注意，这就是你所需要的》(Attention Is All You Need)》。这篇论文的主要贡献在于提出了一个简单但强大的序列转换网络架构。该架构摒弃了复杂的递归神经网络或卷积神经网络，而是采用了更简单的Transformer架构。Transformer的核心思想是基于注意力机制（Attention Mechanism），该机制允许模型在学习过程中关注输入序列中的不同部分，从而提高了模型对上下文的理解能力。
+
+论文的主要作者包括：
+
+- Ashish Vaswani（Google Brain）：提出了Transformer架构的基础概念。
+- Noam Shazeer（Google Brain）：对论文进行了审阅和贡献。
+- Niki Parmar（Google Research）：对论文进行了审阅和贡献。
+- Jakob Uszkoreit（Google Research）：对论文进行了审阅和贡献。
+- Llion Jones（Google Research）：对论文进行了审阅和贡献。
+- Aidan N. Gomez（University of Toronto）：对论文进行了审阅和贡献。
+- Łukasz Kaiser（Google Brain）：对论文进行了审阅和贡献。
+- Illia Polosukhin（illia.polosukhin@gmail.com）：对论文进行了审阅和贡献。
+
+论文的摘要提到，当前最先进的序列转换模型基于复杂的递归或卷积神经网络，包括编码器和解码器。这些模型中，编码器将输入序列转换为固定长度的向量表示，而解码器则根据这些向量生成输出序列。Transformer模型通过注意力机制直接在编码器和解码器之间建立联系，从而简化了模型结构，并通过引入多头注意力机制提高了模型的表达能力。
+
+这篇论文的创新之处在于提出了一个可以用于机器翻译、文本生成和其他序列转换任务的Transformer架构，该架构由于其简洁性和高效性，在自然语言处理领域引起了广泛关注。",2025-10-31 17:54:12
+376,False,91.61,5.03,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+377,True,16.75,0.55,1.52,4,4,,,"在这篇论文中，作者提出了一个名为""Attention Is All You Need""的新型网络架构，旨在简化序列转换模型，替代目前复杂且包含编码器和解码器的神经网络模型。该论文的作者包括来自谷歌大脑、谷歌研究以及多伦多大学的研究人员，他们共同探讨并提出了一个新颖的简单网络架构，通过注意力机制，取代了编码器与解码器之间的复杂连接方式。此模型旨在提高模型的效率和简洁性。
+
+论文摘要强调了当前最先进的模型不仅包含编码器和解码器，并且还通过一种特殊的机制将两者连接起来。而本文提出的新模型旨在简化这一过程，特别是通过引入注意力机制，使得模型更加高效和简约。",2025-10-31 17:54:12
+378,True,44.24,0.54,1.82,3,3,,,"这篇论文的标题为 ""Attention Is All You Need""，作者包括 Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser 和 Illia Polosukhin。该论文主要探讨了一种新的简单网络架构，试图通过简化现有的复杂神经网络模型来提升序列转换模型的性能。这些模型通常包括编码器和解码器，并且在最佳表现的模型中，编码器和解码器之间通过注意力机制连接。
+
+注意力机制是通过一种机制来解决序列建模中的困难，这种机制允许模型在处理序列时，能够关注序列的不同部分，从而提高模型对任务的理解能力。论文提出的新网络架构旨在通过简化模型结构，同时保持或甚至提升模型的性能，来实现这一目标。",2025-10-31 17:54:12
+379,True,2724.15,15.74,2.67,4,4,,,"《Attention Is All You Need》是一项关于自然语言处理领域的研究，由Google Brain团队及其合作伙伴共同完成。该研究的主要贡献是提出了一种新的简单网络架构，即Transformer模型，它彻底摒弃了传统的基于循环神经网络（RNN）或卷积神经网络（CNN）的复杂结构，仅依赖Transformer架构中的注意力机制来处理序列数据。
+
+Transformer通过一系列的关键创新，如自注意力机制和多头注意力机制，实现了对序列数据的高效处理，而不需要使用循环或卷积操作。这种创新使得Transformer架构能够处理长距离依赖关系，同时保持了计算效率。此外，Transformer架构还具有并行计算的优势，能够更快地处理序列数据，这对于大规模语言模型训练特别重要。
+
+研究的主要作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez和Łukasz Kaiser。Illia Polosukhin也参与了这项研究。这项工作不仅为自然语言处理领域带来了革命性的进步，还影响了众多领域的模型设计。
+
+研究的摘要表明，Transformer架构通过引入注意力机制，使得模型在处理文本转文本任务时，表现出色，并且这种架构的简单性为其他领域的应用提供了可能性。",2025-10-31 17:54:12
+380,True,61.78,4.39,5.19,4,4,,,"这段内容似乎是关于一篇名为《Attention Is All You Need》研究的摘要。文章的标题和作者信息已经提供，下面是对摘要内容的总结：
+
+### 研究背景与现有模型
+- 现有的主要序列转换模型通常基于复杂的递归神经网络（RNN）或卷积神经网络（CNN），这些模型通常包括编码器（Encoder）和解码器（Decoder）两个部分。
+- 在这些模型中，最好的模型往往会加入注意力机制（Attention Mechanism）来连接编码器和解码器。
+
+### 研究目标
+- 提出一种新的网络架构，试图简化现有的复杂模型结构。
+
+### 抽象内容
+- 由于现有的复杂模型结构较为复杂，作者希望开发一种更为简单但同样有效的网络架构，这种架构能够取代复杂的递归或卷积神经网络模型，同时能够保留甚至提升模型的性能。
+
+### 作者信息
+- 该研究的作者包括来自Google Brain、Google Research和University of Toronto的研究人员。
+- 具体作者有：
+  - Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit（Google Brain）
+  - Llion Jones 和 Aidan N. Gomez（Google Research）
+  - Łukasz Kaiser（Google Brain）
+  - Illia Polosukhin（illia.polosukhin@gmail.com）
+
+### 重要信息总结
+- 该研究提出了一个新的简单网络架构，旨在取代现有的复杂递归或卷积神经网络模型。
+- 该研究的目标是开发一种新的、更简单但同样有效的网络架构，以简化模型结构，提高模型性能。
+- 该研究由Google Brain和Google Research的多位研究人员与多伦多大学的研究人员共同完成。
+
+### 引用信息
+- 标题：《Attention Is All You Need》
+- 作者：Ashish Vaswani∗、Noam Shazeer∗、Niki Parmar∗、Jakob Uszkoreit∗、Llion Jones∗、Aidan N. Gomez∗、Łukasz Kaiser∗、Illia Polosukhin∗
+
+### 抽象内容
+- 该研究提出了一个新的简单网络架构，试图简化当前复杂的模型结构，以提升模型性能。
+- 研究者们希望这个新的网络架构能够取代现有的复杂递归或卷积神经网络模型，同时保留甚至提升模型的性能。
+
+这份总结总结了研究的背景、目标和参与人员，同时也保留了原文中的引用信息和核心观点。",2025-10-31 17:54:12
+381,True,47.02,0.54,2.22,4,4,,,"这段内容总结了名为《Attention Is All You Need》的论文的相关信息:
+
+论文标题: Attention Is All You Need
+
+作者信息:
+- Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit (Google Brain)
+- Llion Jones, Aidan N. Gomez, Łukasz Kaiser (分别来自Google Research、University of Toronto和Google Brain)
+- Illia Polosukhin (illia.polosukhin@gmail.com)
+
+摘要:
+这篇文章介绍了一种新的简单网络架构,即在序列转换模型中使用注意力机制的网络。目前最先进的序列转换模型通常包含一个编码器和一个解码器,通过注意力机制连接编码器和解码器。该论文提出了一种新型简单网络架构,旨在改进现有的复杂递归或卷积神经网络模型。
+
+整段内容主要介绍了这篇论文的研究背景、提出的研究问题和研究团队,但具体的研究方法和结果并未提及。这通常是一类学术论文的开头部分,用于介绍研究领域、背景、研究目标和研究团队。",2025-10-31 17:54:12
+382,False,122.08,5.02,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+383,True,47.55,0.56,1.90,4,4,,,"这篇文献的标题是《Attention Is All You Need》，作者包括：
+
+- Ashish Vaswani
+- Noam Shazeer
+- Niki Parmar
+- Jakob Uszkoreit
+- Llion Jones
+- Aidan N. Gomez
+- Łukasz Kaiser
+- Illia Polosukhin
+
+他们来自以下机构：
+- Google Brain
+- Google Research
+- Google Research
+- Google Research
+- Google Research
+- University of Toronto
+- Google Brain
+
+该研究的摘要部分指出，目前最主流的序列转换模型都基于复杂的递归或卷积神经网络，这些模型包含一个编码器和一个解码器。最佳表现的模型还会通过注意力机制将编码器和解码器连接起来。
+
+研究中提出了一种新的简单网络架构，称为Transformer。这个架构在序列到序列转换任务中显著优于传统的基于递归或卷积的方法。",2025-10-31 17:54:12
+384,False,45.93,0.54,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+385,False,119.84,2.64,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+386,False,66.84,4.18,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+387,False,48.53,0.54,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+388,False,197.42,5.03,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+389,False,48.55,0.57,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+390,True,49.03,0.54,1.73,4,4,,,"这段内容主要介绍了关于一篇名为""Attention Is All You Need""的文章的背景信息。文章的作者团队包括了来自Google Brain、Google Research、Google Research以及University of Toronto的几位研究人员。文章的主要内容是提出了一个新的简单的网络架构，即Transformer，它简化了之前基于复杂递归或卷积神经网络的模型。这种新架构的主要创新在于它引入了一种新的注意力机制（Attention Mechanism），而不需要传统的编码器-解码器结构中的编码器和解码器之间的连接。文章的目标是提供一种更加简洁、易理解且高效的数据序列转换模型，这种模型能够更好地处理自然语言处理等复杂任务。文章的作者们认为，通过去除编码器和解码器之间的复杂连接，他们能够设计出一个更简单的模型，但依然保持了强大的性能。",2025-10-31 17:54:12
+391,True,75.41,3.63,2.78,5,5,,,"这段文本是关于一篇名为《Attention Is All You Need》的论文的简介，该论文提出了一个新的简单网络架构，旨在简化现有的基于复杂递归或卷积神经网络的序列转换模型。这篇论文的作者包括：
+
+- Ashish Vaswani（来自Google Brain）
+- Noam Shazeer（来自Google Brain）
+- Niki Parmar（来自Google Research）
+- Jakob Uszkoreit（来自Google Research）
+- Llion Jones（来自Google Research）
+- Aidan N. Gomez（来自加拿大大学）
+- Łukasz Kaiser（来自Google Brain）
+- Illia Polosukhin（来自illia.polosukhin@gmail.com）
+
+论文摘要提到，目前最好的序列转换模型通常基于复杂的递归或卷积神经网络，包含一个编码器和一个解码器。这些模型通常还通过一种称为注意力机制（attention mechanism）的非传统方法连接编码器和解码器。作者们提出了一个新型的简单网络架构，旨在简化这些复杂的模型。
+
+论文的主要贡献是提出了一种新的简单网络架构，其设计目的在于取代传统的使用递归或卷积神经网络的复杂的序列转换模型。这种新的架构可能能更好地简化模型结构同时保持或提升模型性能。然而，文本中没有详细说明该架构的具体细节以及它相较于传统模型的优势和改进之处。",2025-10-31 17:54:12
+392,True,76.91,2.38,2.60,5,5,,,"### Attention Is All You Need
+
+**Authors:**
+- Ashish Vaswani∗
+- Noam Shazeer∗
+- Niki Parmar∗
+- Jakob Uszkoreit∗
+- Llion Jones∗
+- Aidan N. Gomez∗
+- Łukasz Kaiser∗
+- Illia Polosukhin∗
+
+**Affiliations:**
+- Google Brain
+- Google Brain
+- Google Research
+- Google Research
+- Google Research
+- University of Toronto
+- Google Brain
+- illia.polosukhin@gmail.com
+
+**Abstract:**
+The predominant sequence transduction models rely on sophisticated recurrent or convolutional neural networks that consist of an encoder and a decoder. The most effective models interconnect the encoder and decoder via a specific mechanism. We introduce a novel, simple network architecture, called the Transformer, which eliminates the need for recurrent or convolutional components and the need for an explicit mechanism to connect the encoder and decoder. Instead, the Transformer employs a mechanism called ""attention,"" which allows the model to weigh the importance of different parts of the input when processing a given element. This approach results in a highly efficient architecture that can achieve state-of-the-art performance in sequence-to-sequence tasks without the use of any recurrent or convolutional layers.",2025-10-31 17:54:12
+393,True,51.38,0.56,2.68,5,5,,,"在这段描述中，提到了一篇关于自然语言处理中序列转接模型的重要论文《Attention Is All You Need》。该论文的作者团队包括来自Google Brain、Google Research、Google以及多伦多大学的研究人员。以下是论文的详细摘要：
+
+**标题**: Attention Is All You Need
+
+**作者**:
+- Ashish Vaswani (谷歌大脑)
+- Noam Shazeer (谷歌大脑)
+- Niki Parmar (谷歌研究)
+- Jakob Uszkoreit (谷歌研究)
+- Llion Jones (谷歌研究)
+- Aidan N. Gomez (多伦多大学)
+- Łukasz Kaiser (谷歌大脑)
+- Illia Polosukhin (illia.polosukhin@gmail.com)
+
+**摘要**:
+目前，用于处理序列的主导模型基于复杂的递归或卷积神经网络，这些模型包含一个编码器和一个解码器。最好的模型还通过一种称为注意力机制的非传统方法连接编码器和解码器。本文提出了一种新的简单网络架构，名为Transformer模型，旨在简化模型的复杂性，并提高处理序列数据的能力。Transformer模型摒弃了传统的递归或卷积网络，采用注意力机制作为主要的信息处理方式，从而显著简化了网络结构，同时保持了强大的性能。",2025-10-31 17:54:12
+394,False,196.85,5.03,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+395,True,50.63,0.58,2.03,5,5,,,"这篇文章标题为《Attention Is All You Need》，作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser 和Illia Polosukhin。这篇文章发表在Google Brain、Google Research、Google和多伦多大学的研究人员之间。文章讨论了目前最先进的序列转换模型主要基于复杂的递归或卷积神经网络，这些模型包括编码器和解码器，并通过某种机制连接编码器和解码器。为了提供一种新颖且简单的网络架构替代这些复杂模型，作者提出了Transformer架构。
+
+Transformer架构的核心在于其自注意力机制（Self-Attention Mechanism），摒弃了传统模型中需要的递归或卷积层，这使得模型在多任务学习和并行化训练方面表现优越。自注意力机制允许模型在不使用循环神经网络或卷积操作的情况下捕捉并整合输入序列中的信息。",2025-10-31 17:54:12
+396,True,14.14,0.53,1.57,3,3,,,"这篇文章的标题是《Attention Is All You Need》。这篇文章的作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser以及Illia Polosukhin。文章的通讯作者是Ashish Vaswani和Noam Shazeer。
+
+这篇文章的摘要指出，目前主导的序列转换模型通常基于复杂的递归神经网络或卷积神经网络，这些模型包括编码器和解码器。最有效的模型还会在编码器和解码器之间引入注意力机制。
+
+文章中提出了一种新的简单网络架构——“T”，其目标是简化现有的复杂模型结构，同时保持或提升模型的表现。",2025-10-31 17:54:12
+397,True,30.61,3.44,1.90,4,4,,,"这篇论文的标题为《Attention Is All You Need》，作者包括：
+
+- Ashish Vaswani (来自Google Brain)
+- Noam Shazeer (来自Google Brain)
+- Niki Parmar (来自Google Research)
+- Jakob Uszkoreit (来自Google Research)
+- Llion Jones (来自Google Research)
+- Aidan N. Gomez (来自多伦多大学)
+- Łukasz Kaiser (来自Google Brain)
+- Illia Polosukhin (来自illia.polosukhin@gmail.com)
+
+论文的摘要提到，多数序列转换模型主要依赖于复杂循环神经网络或卷积神经网络，这些模型通常包含一个编码器和一个解码器。在这些模型中，最佳表现的模型也通过注意力机制连接了编码器和解码器。论文提出了一种新的简单网络架构，称为Transformer，旨在简化这些复杂模型，并可能提升模型的性能和效率。",2025-10-31 17:54:12
+398,True,38.28,14.54,4.02,4,4,,,"这篇文献主要介绍了一种名为""Attention Is All You Need""的新型网络架构。这是关于一种用于处理序列数据的神经网络模型，特别适用于序列到序列（如机器翻译）的任务。该模型简化了传统的复杂模型，如包含编码器和解码器的循环神经网络（RNN）或卷积神经网络（CNN），并特别强调了一种名为""注意力机制""的新颖技术。
+
+### 文献摘要
+- **作者**：
+  - Ashish Vaswani (Google Brain)
+  - Noam Shazeer (Google Brain)
+  - Niki Parmar (Google Research)
+  - Jakob Uszkoreit (Google Research)
+  - Llion Jones (Google Research)
+  - Aidan N. Gomez (University of Toronto)
+  - Łukasz Kaiser (Google Brain)
+  - Illia Polosukhin (illia.polosukhin@gmail.com)
+
+- **论文标题**：
+  - ""Attention Is All You Need""
+
+- **文章摘要**：
+  - 现代主要的序列转换模型基于复杂的循环神经网络（RNN）或卷积神经网络（CNN），这些模型包括编码器和解码器。最有效的模型还通过注意力机制连接编码器和解码器。
+  - 本文提出了一种新的简单网络架构，名为Transformer，旨在简化上述复杂的模型结构，同时引入了注意力机制来提升模型的性能和效率。
+
+### 关键点
+1. **简化架构**：Transformer通过去除复杂的循环或卷积层，采用了更简单的结构。
+2. **注意力机制**：注意力机制是Transformer的核心创新，它允许模型在处理序列数据时选择性地关注输入序列中的不同部分。
+3. **提升性能**：基于注意力机制的模型，如Transformer，在多个任务中取得了比传统模型显著更高的性能。
+
+总之，这篇文献为序列到序列转换任务提供了新的解决方案，特别是在处理长序列时，能够显著提升模型的性能。",2025-10-31 17:54:12
+399,True,16.92,0.52,1.82,4,4,,,"这篇文献的标题是《Attention Is All You Need》。它是由多位作者共同撰写，分别来自Google Brain、Google Research和University of Toronto。作者们提出了一个新的、简单但高效的序列转换网络架构。他们指出，当前最先进的序列转换模型通常依赖于复杂的循环神经网络（RNN）或卷积神经网络（CNN），这些模型包含编码器和解码器两个部分。这些模型中最佳的表现者通常会引入一种注意力机制来连接编码器和解码器。
+
+该研究提出了一种新的网络结构，被称为“T”，它是一种基于注意力机制的简单网络模型。这个模型旨在提供一种高效的替代方法，来实现复杂的序列转换任务，如机器翻译、语音识别等。通过这种简单的架构，研究者希望探索是否可以达到或超越当前最先进的模型性能，同时简化模型的复杂度和计算成本。",2025-10-31 17:54:12
+400,False,91.55,5.03,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+401,True,17.57,0.54,2.22,4,4,,,"这篇论文标题为《Attention Is All You Need》。主要内容如下：
+
+- 研究团队成员包括：
+  - Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, 分别来自Google Brain、Google Brain、Google Research和Google Research。
+  - Llion Jones, Aidan N. Gomez, Łukasz Kaiser 分别来自Google Research、多伦多大学和Google Brain。
+  - Illia Polosukhin 也参与了这项研究，其电子邮件为illia.polosukhin@gmail.com。
+
+- 论文讨论的主题是关于序列转换模型，这一类模型通常基于复杂的循环神经网络或卷积神经网络，并包含编码器和解码器两部分。其中，最好的模型通常会通过注意力机制将编码器和解码器连接起来。
+
+- 简单来说，研究的主要贡献是提出了一种全新的简单网络架构，简称T。这种架构在简化模型复杂性的前提下，仍然保持了或提升了序列转换任务的性能。",2025-10-31 17:54:12
+402,False,16.19,0.54,0.00,4,4,文件读取失败,,,2025-10-31 17:54:12
+403,False,65.61,20.03,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+404,False,39.48,2.99,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+405,False,18.74,0.58,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+406,False,166.98,5.02,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+407,False,18.62,0.54,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+408,True,19.06,0.55,2.88,4,4,,,"以下是关于论文《Attention Is All You Need》的总结：
+
+这篇论文提出了一个全新的简单网络架构——Transformer，它摒弃了复杂性的循环神经网络（RNN）和卷积神经网络（CNN），直接使用了自注意力机制（Attention Mechanism）进行信息处理。Transformer架构不仅简化了模型设计，还显著提升了模型的性能。
+
+论文的主要作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser以及Illia Polosukhin。Illia Polosukhin是该论文的第四作者，其余作者来自谷歌大脑（Google Brain）和多伦多大学（University of Toronto）。
+
+该论文的目标是提出一种新的简单网络架构，以替代现有的复杂模型。论文的核心是提出一种全新的架构——Transformer，它通过自注意力机制在编码器和解码器之间建立了直接的联系，而无需使用循环或卷积机制。作者声称，在各种序列生成任务中，Transformer能够达到或超越基于复杂模型的最佳性能。
+
+自注意力机制允许Transformer模型根据输入序列中的每个位置的重要性对预测进行加权，从而实现了端到端的学习，同时避免了需要手工设计和调整的复杂的循环和卷积网络结构。因此，Transformer架构具有更高的灵活性和更好的性能，尤其是在处理长距离依赖关系时。",2025-10-31 17:54:12
+409,True,69.39,11.40,2.04,5,5,,,"这篇文档主要介绍了关于一项名为“Attention Is All You Need”的研究。这项研究由Google Brain、Google Research和University of Toronto的研究人员共同完成。研究的作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser以及Illia Polosukhin。
+
+该研究提出了一个简单且创新的网络架构，强调了注意力机制的重要性，从而取代了以往基于复杂递归神经网络或卷积神经网络的模型。这些模型通常包含编码器和解码器两部分，并且常常通过一种被称为“none”的机制将编码器和解码器连接起来。研究中提到的最佳表现模型也采用了这种机制。
+
+文档的剩余部分被省略了，但从标题和开头部分的内容可以看出，该研究的主要贡献在于提出了一个新的简单网络架构，并将其与注意力机制结合，从而实现高效的序列转换任务。",2025-10-31 17:54:12
+410,True,82.76,5.53,2.31,5,5,,,"这篇文献的标题是《Attention Is All You Need》，作者包括：
+
+- Ashish Vaswani（来自Google Brain）
+- Noam Shazeer（来自Google Brain）
+- Niki Parmar（来自Google Research）
+- Jakob Uszkoreit（来自Google Research）
+- Llion Jones（来自Google Research）
+- Aidan N. Gomez（来自多伦多大学）
+- Łukasz Kaiser（来自Google Brain）
+- Illia Polosukhin（来自Illia Polosukhin）
+
+文章的研究领域是自然语言处理，特别是序列转导模型（sequence transduction models），如机器翻译。文中提出的是一种新的简单网络架构，称为Transformer。
+
+Transformer的核心理念是将序列转换问题简化为注意力机制（attention mechanism）和线性变换（linear transformation）的过程，彻底摒弃了传统模型中复杂的递归神经网络（recurrent neural networks, RNN）或卷积神经网络（convolutional neural networks, CNN）编码器和解码器结构。这种架构不仅简化了模型的复杂性，还显著提升了模型的效率和准确性。",2025-10-31 17:54:12
+411,True,21.41,0.49,2.92,5,5,,,"这段内容主要介绍了论文《Attention Is All You Need》的作者列表以及摘要，该论文由阿里云以外的团队撰写，具体是Google Brain的几位研究人员与其他学者共同完成。以下是该内容的总结：
+
+### 论文信息
+
+- **标题**: Attention Is All You Need
+- **作者**: 
+  - Ashish Vaswani（谷歌大脑）
+  - Noam Shazeer（谷歌大脑）
+  - Niki Parmar（谷歌研究）
+  - Jakob Uszkoreit（谷歌研究）
+  - Llion Jones（谷歌研究）
+  - Aidan N. Gomez（多伦多大学）
+  - Łukasz Kaiser（谷歌大脑）
+  - Illia Polosukhin（illia.polosukhin@gmail.com）
+
+### 摘要
+
+本文提出了一个新型简单网络架构，旨在取代当前基于复杂递归或卷积神经网络（RNN/CNN）的主流序列转换模型。这些模型通常包含一个编码器和一个解码器，并通过某种形式的连接机制将编码器和解码器关联起来。作者们在这篇论文中提出了一种新颖且简单的网络架构，它能够处理序列到序列的转换问题，并且在性能上表现出色。尽管该论文标题中提到“Attention Is All You Need”，但它实际上并不是专注于只使用注意力机制，而是提出了一种新的、更简单但依然高效的网络架构。",2025-10-31 17:54:12
+412,False,166.98,5.03,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+413,True,21.07,0.54,2.52,5,5,,,"这篇论文的标题为《Attention is All You Need》,作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser和Illia Polosukhin。这些作者目前均来自Google Brain、Google Research和Google的其他部门。论文由Ashish Vaswani、Noam Shazeer和Jakob Uszkoreit共同撰写。
+
+这篇论文介绍了创新的神经网络架构,该架构仅通过注意力机制(Attention Mechanism)就足以进行序列转换单元(transduction units)的处理。这一新架构简单且易于实现,能够取代复杂且通常包含编码器(Encoder)和解码器(Decoder)的递归或卷积神经网络。值得注意的是,论文指出,一些最佳表现的模型通过一种非注意力机制(Non-Attention Mechanism)连接编码器和解码器。
+
+论文的摘要暗示,新的网络架构可能简化了模型的复杂性,且仅通过注意力机制就能实现复杂的序列处理任务,从而显著简化了模型设计。然而,具体的网络架构细节以及其在实际应用中的表现并未在摘要中详细说明。",2025-10-31 17:54:12
+414,True,48.14,0.54,2.09,4,4,,,"这篇论文的标题是《Attention Is All You Need》。主要作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser和Illia Polosukhin。该论文的核心贡献是提出了一个新的简单网络架构，即Transformer。这是在基于复杂递归或卷积神经网络的序列转换模型（如基于LSTM或GRU的模型）的基础上，通过引入注意力机制（Attention Mechanism）的改进。
+
+论文提出了一个新的简单网络架构，而不是依赖于复杂的递归或卷积神经网络。通过引入注意力机制，论文声称能够显著提高模型在各种自然语言处理任务上的性能。Transformer模型简化了模型结构，减少了参数数量，同时保留了模型的性能。这一创新在深度学习领域引起了广泛关注，促成了Transformer架构在自然语言处理领域中的广泛应用，尤其是对于语言生成任务，如机器翻译、文本摘要等。",2025-10-31 17:54:12
+415,True,74.47,7.93,1.39,5,5,,,这篇文档标题是《Attention Is All You Need》，作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser和Illia Polosukhin。文章摘要陈述了当前领先的序列转换模型依赖于复杂的递归神经网络或卷积神经网络，这些模型通常包含编码器和解码器两部分。最有效的模型则是通过注意力机制将编码器和解码器连接起来。本文提出了一种新的简单网络架构，即Transformer，旨在简化模型结构，同时保持或超越现有的性能水平。,2025-10-31 17:54:12
+416,True,121.29,1.16,1.60,5,5,,,"这篇论文的标题是《Attention Is All You Need》。本文的作者包括来自Google Brain、Google Research、Google Research和University of Toronto的多位研究者。共同作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez、Łukasz Kaiser和Illia Polosukhin。
+
+论文摘要提到，目前最有效的序列转换模型基于复杂的递归或卷积神经网络，包括编码器和解码器。这些模型还会通过注意力机制将编码器和解码器连接起来。本文介绍了一种新的简单网络架构，该架构旨在简化现有基于复杂网络的传统序列转换模型，并通过引入注意力机制来提升模型的性能。",2025-10-31 17:54:12
+417,True,51.72,0.54,2.53,5,5,,,"以下是您提供的内容的总结：
+
+标题：""Attention Is All You Need""
+
+作者信息：
+- Ashish Vaswani∗, Google Brain, avaswani@google.com
+- Noam Shazeer∗, Google Brain, noam@google.com
+- Niki Parmar∗, Google Research, nikip@google.com
+- Jakob Uszkoreit∗, Google Research, usz@google.com
+- Llion Jones∗, Google Research, llion@google.com
+- Aidan N. Gomez∗ †, University of Toronto, aidan@cs.toronto.edu
+- Łukasz Kaiser∗, Google Brain, lukaszkaiser@google.com
+- Illia Polosukhin∗ ‡, illia.polosukhin@gmail.com
+
+摘要：
+主导的序列转换模型基于复杂的递归或卷积神经网络，包括编码器和解码器。最先进的模型不仅通过注意力机制连接编码器和解码器，而且还包含一个编码器和一个解码器。本文提出了一种新的简单网络架构，即Transformer模型。这种模型在保持高效和简洁的同时，能够有效地处理长距离依赖问题，从而在自然语言处理任务中表现出色。",2025-10-31 17:54:12
+418,False,197.18,5.02,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+419,True,50.95,0.56,1.76,5,5,,,"这篇论文主要介绍了名为""Attention Is All You Need""（所有的注意力机制就够了）的神经网络模型，该模型用于处理序列到序列的转换任务。主要作者包括Ashish Vaswani、Noam Shazeer、Niki Parmar、Jakob Uszkoreit、Llion Jones、Aidan N. Gomez和Łukasz Kaiser，以及Illia Polosukhin。
+
+该模型简化了之前复杂的基于循环神经网络或卷积神经网络的模型，这些模型通常包括一个编码器和一个解码器。值得注意的是，最成功的模型通过注意力机制连接了编码器和解码器。
+
+论文中概述了一个新的简单网络架构——T...（此处略去了具体的架构详情，因为文档没有完整提供），旨在通过利用注意力机制来改进序列到序列的转换模型。",2025-10-31 17:54:12
+420,False,50.47,0.52,0.00,5,5,文件读取失败,,,2025-10-31 17:54:12
+421,False,103.90,9.46,0.00,6,6,文件读取失败,,,2025-10-31 17:54:12
+422,False,81.28,4.37,0.00,6,6,文件读取失败,,,2025-10-31 17:54:12
+423,False,51.77,0.51,0.00,6,6,文件读取失败,,,2025-10-31 17:54:12
+424,False,273.46,5.03,0.00,6,6,文件读取失败,,,2025-10-31 17:54:12
+425,False,51.83,0.56,0.00,6,6,文件读取失败,,,2025-10-31 17:54:12
+426,True,51.55,0.57,1.89,5,5,,,"这篇论文的标题是《Attention Is All You Need》。
+
+主要作者包括：
+- Ashish Vaswani（谷歌大脑）
+- Noam Shazeer（谷歌大脑）
+- Niki Parmar（谷歌研究）
+- Jakob Uszkoreit（谷歌研究）
+- Llion Jones（谷歌研究）
+- Aidan N. Gomez（多伦多大学）
+- Łukasz Kaiser（谷歌大脑）
+- Illia Polosukhin（illia.polosukhin@gmail.com）
+
+研究提出了一种新的简单网络架构，称为Transformer。这种架构摒弃了复杂的递归或卷积神经网络，采用了注意力机制（Attention Mechanism），显著简化了模型结构。研究认为，注意力机制能够实现高效的上下文信息捕捉，使得模型能够通过单一的、简单的机制，在不引入额外参数的情况下，有效地处理复杂的序列任务。研究成果对于自然语言处理领域具有重要的影响。",2025-10-31 17:54:12
+427,True,105.81,6.56,2.07,6,6,,,"这篇论文提出了名为“Attention Is All You Need”的新网络架构，旨在简化现有的基于复杂递归或卷积神经网络的序列转换模型。传统的方法通常包含两个主要部分：编码器和解码器。编码器将输入序列转换为固定长度的向量，而解码器则使用这些向量生成输出序列。论文中提到，最好的模型不仅连接编码器和解码器，而且还通过某种机制来实现这一点。
+
+新提出的架构，即“Attention Is All You Need”，是一种更简单、更高效的网络结构。该架构的核心在于引入了一种称为“注意力机制”的技术。注意力机制允许模型在处理序列数据时，能够专注于序列中的不同部分，从而提高生成输出的准确性和效率。
+
+虽然论文标题中并未完全展示完整标题，但根据提供的信息，主要贡献包括提出了一种新的、更简单的网络架构，并引入了注意力机制，用以简化序列转换模型，同时提高模型的性能和效率。",2025-10-31 17:54:12
+428,True,88.05,2.66,1.59,6,6,,,"这段内容是一篇文章的摘要，标题为《Attention Is All You Need》。该文章的主要作者是Google Brain、Google Research、Google Research和University of Toronto的部分研究人员。
+
+文章讨论了现有的基于复杂递归或卷积神经网络的序列转换模型，包括编码器和解码器，并且这些模型通常通过某种机制将编码器和解码器连接起来。研究人员提出了一个新的简单网络架构，该架构简单但具有高效的注意力机制（Attention Mechanism），旨在替代现有的复杂模型。他们的目标是创建一个更简单、更高效但仍然具有强大性能的序列转换模型。
+
+文章摘要没有提供完整的内容，但其核心思想是研究新的简单且高效的序列转换模型架构，该架构利用注意力机制。",2025-10-31 17:54:12
+429,True,54.41,0.50,2.47,6,6,,,"这篇文献的标题是《Attention Is All You Need》。作者包括：
+
+1. Ashish Vaswani (Google Brain, vaswani@google.com)
+2. Noam Shazeer (Google Brain, noam@google.com)
+3. Niki Parmar (Google Research, nikip@google.com)
+4. Jakob Uszkoreit (Google Research, usz@google.com)
+5. Llion Jones (Google Research, llion@google.com)
+6. Aidan N. Gomez (University of Toronto, aidan@cs.toronto.edu)
+7. Łukasz Kaiser (Google Brain, lukaszkaiser@google.com)
+8. Illia Polosukhin (illia.polosukhin@gmail.com)
+
+该研究的主要贡献在于提出了一种新的简单网络架构，名为Transformer，这是一种用于序列转换任务的网络结构。Transformer与传统基于复杂递归或卷积神经网络的方法不同，它通过注意力机制来处理输入序列，同时避免了复杂的编码器-解码器架构中的循环结构和前向卷积操作。这种设计使模型能够更加高效地处理长距离依赖关系，且训练和推理速度更快。",2025-10-31 17:54:12
+430,False,272.22,5.03,0.00,6,6,文件读取失败,,,2025-10-31 17:54:12
+431,True,54.35,0.53,2.44,6,6,,,"这段内容摘自论文《Attention Is All You Need》。以下是主要内容的总结：
+
+该论文由来自Google Brain、Google Research、Google Research、Google Research、Google Research、Google Research和University of Toronto的作者共同撰写。论文的作者包括：
+
+- Ashish Vaswani
+- Noam Shazeer
+- Niki Parmar
+- Jakob Uszkoreit
+- Llion Jones
+- Aidan N. Gomez
+- Łukasz Kaiser
+- Illia Polosukhin
+
+摘要简述了现有基于复杂递归或卷积神经网络的序列转换模型，这些模型通常包括编码器和解码器两部分，且它们之间通过一种非标准机制连接。论文提出了一种新的简单网络架构，名为Transformer，旨在解决上述复杂网络模型的两个主要问题：复杂性高和效率低。
+
+Transformer通过使用注意力机制来处理输入序列，该机制允许模型在处理输入序列时集中注意力于输入序列的不同部分，而无需使用递归或循环。这使得Transformer能够实现与复杂神经网络模型相当甚至更好的性能，同时其结构更为简单，因此在运行效率和可扩展性上也更加优越。",2025-10-31 17:54:12

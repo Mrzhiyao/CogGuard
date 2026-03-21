@@ -7,7 +7,48 @@ This document describes the main workflow of the CogGuard, which contains two mo
 
 # Dataset
 
-The original dataset is stored in `Datasets.rar`. Partial experimental data is available in `edu_data/` and `Profile-to-Score Alignment/datasets/`.
+The original dataset archive is stored in `Datasets.zip`.
+
+Available data artifacts in this repository include:
+
+- Example education-scenario data for quick inspection and testing: `edu_data/`
+- Example ops-scenario data for quick inspection and testing: `ops_data/`
+- Education-scenario efficiency / speed test results: `Cognitive Profilng/edu_data(efficiency test)/`
+- Raw ops datasets, task definitions, logs, and timing-related files: `Cognitive Profilng/ops/`
+- Processed alignment datasets: `Profile-to-Score Alignment/datasets/`
+
+Large artifacts are distributed separately:
+
+- Complete education-scenario graph construction outputs for `Cognitive Profilng/edu_data/`: download from [Google Drive](https://drive.google.com/drive/folders/1H-IYYixwArmH64ekR974wCBVUmnQoXkf?usp=sharing)
+- Demo LoRA checkpoints for `demo/checkpoints/`: download from [Google Drive](https://drive.google.com/drive/folders/1H-IYYixwArmH64ekR974wCBVUmnQoXkf?usp=sharing)
+
+The repository may keep only placeholder directories for these large folders. Download them when you need the full artifacts.
+
+---
+
+## Quick Start
+
+For a minimal first run:
+
+1. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. Download large artifacts from [Google Drive](https://drive.google.com/drive/folders/1H-IYYixwArmH64ekR974wCBVUmnQoXkf?usp=sharing) and place them in:
+
+- `Cognitive Profilng/edu_data/`
+- `demo/checkpoints/`
+
+3. Start the demo:
+
+```bash
+cd demo
+python app.py --port 7860 --preload ops
+```
+
+4. For full data preparation, training, and inference workflows, continue reading the sections below or see `demo/README.md` for demo-specific details.
 
 ---
 
@@ -28,6 +69,12 @@ The original dataset is stored in `Datasets.rar`. Partial experimental data is a
 ## Cognitive Profiling
 
 ### Education Scenario (Edu Scenario)
+
+Available education-scenario artifacts:
+
+- Root-level example data is stored in `edu_data/`
+- Full dual-graph construction results for `Cognitive Profilng/edu_data/` are provided separately on [Google Drive](https://drive.google.com/drive/folders/1H-IYYixwArmH64ekR974wCBVUmnQoXkf?usp=sharing)
+- Efficiency / speed test results for different settings are stored in `Cognitive Profilng/edu_data(efficiency test)/`
 
 #### 1. Data Collection
 
@@ -54,6 +101,10 @@ bash "Cognitive Profilng/run_our2.sh"
 ---
 
 ### Operations Scenario (Ops Scenario)
+
+Available ops-scenario artifacts:
+
+- Raw chaos engineering datasets, task definitions, execution logs, and merged timing outputs are stored under `Cognitive Profilng/ops/`
 
 #### 1. Get Failure Combination Data
 
@@ -246,27 +297,29 @@ python "Profile-to-Score Alignment/summary_sentity_datasets_eip.py"
 
 ### Demo Frontend
 
-The demo frontend entry is `demo/app.py`.
+The demo frontend entry is `demo/app.py`, and detailed demo / offline evaluation instructions are available in `demo/README.md`.
 
 Default relative paths used by the demo:
 
-- Base model: `demo/models/Qwen2.5-3B-Instruct`
-- EDU demo data: `demo/datas/test_raw_40_new.jsonl`
-- OPS demo data: `demo/datas/test_raw_ops.jsonl`
-- EDU LoRA checkpoint: `demo/models/lora/edu/checkpoint`
-- OPS LoRA checkpoint: `demo/models/lora/ops/checkpoint`
+- Base model: `demo/base_model/Qwen2.5-3B-Instruct`
+- EDU raw demo data: `demo/datas/test_raw_40_new.jsonl`
+- OPS raw demo data: `demo/datas/test_raw_ops.jsonl`
+- EDU LoRA checkpoint: `demo/checkpoints/edu/Qwen2.5-3B-Instruct/stu20_node3`
+- OPS LoRA checkpoint: `demo/checkpoints/ops/Qwen2.5-3B-Instruct`
+
+Offline evaluation assets in `demo/`:
+
+- Batch inference scripts: `demo/ssh/inference_*.py`
+- Tokenized test files: `demo/checkpoints/test_data/`
+- Exported extreme-error analysis: `demo/ssh/outputs/`
+
+Checkpoint files for `demo/checkpoints/` are provided on [Google Drive](https://drive.google.com/drive/folders/1H-IYYixwArmH64ekR974wCBVUmnQoXkf?usp=sharing).
 
 Start command:
 
 ```bash
 cd "demo"
-conda run -n your_env_name python app.py --port 7860 --preload ops
+python app.py --port 7860 --preload ops
 ```
 
-If your model or LoRA checkpoint is stored elsewhere, you can override the default relative paths with environment variables:
-
-```bash
-COGGUARD_BASE_MODEL_PATH=...
-COGGUARD_EDU_LORA_PATH=...
-COGGUARD_OPS_LORA_PATH=...
-```
+For the full demo configuration, multi-model offline evaluation setup, and directory layout, see `demo/README.md`.

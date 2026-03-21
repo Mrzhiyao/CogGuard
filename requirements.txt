@@ -4,10 +4,13 @@
 accelerate==1.6.0
 datasets==3.5.1
 evaluate==0.4.6
+flask==3.1.1
+flask-cors==6.0.1
 numpy==2.3.4
 pandas==2.3.3
 peft==0.15.2
 ray[train]==2.52.1
+safetensors==0.6.2
 scikit-learn==1.7.2
 swanlab==0.5.7
 tensorboard==2.20.0

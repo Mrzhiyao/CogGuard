@@ -34,7 +34,7 @@ class SimpleChaosExecutor:
         self.file_config = {
             'host': '***',
             'user': 'root', 
-            'file_path': '/nfs/ai/ai-model/chaos_mesh/NIPS2017attentionisallyouneedPaper.txt'
+            'file_path': '/data/chaos-bench/NIPS2017attentionisallyouneedPaper.txt'
         }
 
         # chaosd配置

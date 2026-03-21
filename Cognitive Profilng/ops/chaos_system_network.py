@@ -117,10 +117,10 @@ FAULT_TYPES_CONFIG = {
         'description': '网络故障类型 (统一管理，避免冲突)',
         'cmd_templates': {
             'none': '',
-            'packet_loss_70': 'chaosd attack network loss -d enp2s0 -i 192.168.2.78 --percent 70',
-            'packet_error_70': 'chaosd attack network corrupt -d enp2s0 -i 192.168.2.78 --percent 70',
-            'packet_duplicate_70': 'chaosd attack network duplicate -d enp2s0 -i 192.168.2.78 --percent 70',
-            'delay_6000ms': 'chaosd attack network delay -d enp2s0 -i 192.168.2.78 -l 6000ms',
+            'packet_loss_70': 'chaosd attack network loss -d enp2s0 -i storage-host.local --percent 70',
+            'packet_error_70': 'chaosd attack network corrupt -d enp2s0 -i storage-host.local --percent 70',
+            'packet_duplicate_70': 'chaosd attack network duplicate -d enp2s0 -i storage-host.local --percent 70',
+            'delay_6000ms': 'chaosd attack network delay -d enp2s0 -i storage-host.local -l 6000ms',
             'bandwidth_5mbps': 'chaosd attack network bandwidth --buffer 10000 --device enp2s0 --limit 10000 --rate 5mbps'
         },
         'recover_cmd': 'chaosd recover {uid}',
@@ -304,7 +304,7 @@ class EnhancedChaosExperimentManager:
                 writer.writerow({
                     'scenario_id': scenario['scenario_id'],
                     'execution_target': scenario['target_ip'],
-                    'nfs_target': '192.168.2.78',
+                    'nfs_target': 'storage-host.local',
                     'model_name': scenario['model_name'],
                     'model_type': scenario['model_type'],
                     'total_faults': scenario['total_faults'],

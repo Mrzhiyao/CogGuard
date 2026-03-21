@@ -11,7 +11,7 @@ from sklearn.metrics import confusion_matrix, classification_report, f1_score, p
 # 配置路径
 mode_path = './Qwen2.5-3B-Instruct'
 lora_paths = [
-"/nas/***/checkpoint"]
+"/path/to/checkpoint"]
 
 test_file = './datasets/validation_processed_20_qwen25_3b.jsonl'
 

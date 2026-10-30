@@ -66,6 +66,7 @@ python app.py --port 7860 --preload ops
   - [Training](#training)
   - [Inference and Validation](#inference-and-validation)
   - [Demo Frontend](#demo-frontend)
+- [Citation](#citation)
 
 ---
 
@@ -326,3 +327,18 @@ python app.py --port 7860 --preload ops
 ```
 
 For the full demo configuration, multi-model offline evaluation setup, and directory layout, see `demo/README.md`.
+
+---
+
+## Citation
+
+```bibtex
+@inproceedings{yao2026cogguard,
+  title     = {CogGuard: Cognitive and Operational Profiling for Proactive Warning in Edge Intelligent Services},
+  author    = {Yao, Zhi and Chen, Weihao and Tang, Zhiqing and Cui, Hanshuai and Ma, Qianli and Jia, Weijia and Zhao, Wei},
+  booktitle = {2026 IEEE International Conference on Web Services (ICWS)},
+  pages     = {179--189},
+  year      = {2026},
+  doi       = {10.1109/ICWS72778.2026.00035}
+}
+```

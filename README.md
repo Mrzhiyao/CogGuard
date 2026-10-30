@@ -1,6 +1,6 @@
 # CogGuard 
 
-This document describes the main workflow of the CogGuard, which contains two modules: Cognitive Profiling and Profile-to-Score Alignment.
+This is an implementation of our paper [CogGuard: Cognitive and Operational Profiling for Proactive Warning in Edge Intelligent Services](https://ieeexplore.ieee.org/document/11670125), published in the 2026 IEEE International Conference on Web Services (ICWS). In this repo, we implement the proposed CogGuard framework with its two modules, Cognitive Profiling and Profile-to-Score Alignment, in both education and AIOps scenarios.
 
 CogGuard is a research-oriented framework for proactive behavior warning through cognitive graph profiling and profile-to-score alignment.
 It covers both education and AIOps scenarios, including raw data processing, dual-graph construction, alignment dataset preparation, training, inference, and an interactive demo.
